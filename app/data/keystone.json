@@ -1,7 +1,7 @@
 [
     {
-        "date": "03/6/15",
-        "time": "7:12:12"
+        "date": "03/9/15",
+        "time": "20:38:38"
     },
     {
         "trailName": "BEAR TREE",
@@ -269,11 +269,6 @@
         "trailDifficulty": "advanced"
     },
     {
-        "trailName": "RICHTER",
-        "trailStatus": "open",
-        "trailDifficulty": "advanced"
-    },
-    {
         "trailName": "THE SLOT",
         "trailStatus": "open",
         "trailDifficulty": "advanced"
@@ -285,6 +280,11 @@
     },
     {
         "trailName": "MINESHAFT",
+        "trailStatus": "closed",
+        "trailDifficulty": "advanced"
+    },
+    {
+        "trailName": "RICHTER",
         "trailStatus": "closed",
         "trailDifficulty": "advanced"
     },

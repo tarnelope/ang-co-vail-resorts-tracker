@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 		urls.forEach(function(resortObj) {
 			
 			var resortName = resortObj.resort;
-			var fileName = 'data/' + resortName + '.json';
+			var fileName = 'app/data/' + resortName + '.json';
 
 			var now = new Date();
 			var allTrails = [

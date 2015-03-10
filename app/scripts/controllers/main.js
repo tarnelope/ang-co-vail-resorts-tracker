@@ -8,10 +8,13 @@
  * Controller of the coResortTrackerApp
  */
 angular.module('coResortTrackerApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, DailyResortStatus) {
+	  
+	  DailyResortStatus.getKeystoneStatus()
+	  	.success(function(keystoneData, status) {
+	  		console.log('KeystoneData retrieved! ', status, keystoneData);
+			
+			$scope.keystoneData = keystoneData;
+	  	});
+
   });

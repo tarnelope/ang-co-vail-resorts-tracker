@@ -26,16 +26,16 @@ module.exports = function (grunt) {
 	  
 	// Writing file to MongoDb
     shell: {
-         add_keystone_data: {
+         addKeystoneData: {
 		   command: 'mongoimport --db trailstatus --collection keystonestatus --drop --type json --file public/data/keystone.json --jsonArray'
          },
-         add_bc_data: {
+         addBCData: {
 		   command: 'mongoimport --db trailstatus --collection bcstatus --drop --type json --file public/data/beaverCreek.json --jsonArray'
          },
-         add_breck_data: {
+         addBreckData: {
 		   command: 'mongoimport --db trailstatus --collection breckstatus --drop --type json --file public/data/breck.json --jsonArray'
          },
-         add_vail_data: {
+         addVailData: {
 		   command: 'mongoimport --db trailstatus --collection vailstatus --drop --type json --file public/data/vail.json --jsonArray'
          }
      },
