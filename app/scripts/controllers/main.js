@@ -10,10 +10,11 @@
 angular.module('coResortTrackerApp')
   .controller('MainCtrl', function ($scope, DailyResortStatus) {
 	  
+	  $scope.scrapeDate = '';
 	  DailyResortStatus.getKeystoneStatus()
-	  	.success(function(keystoneData, status) {
-	  		console.log('KeystoneData retrieved! ', status, keystoneData);
-			
+	  	.success(function(keystoneData) {
+	  		console.log('KeystoneData retrieved! ');
+			$scope.scrapeDate = keystoneData[0];
 			$scope.keystoneData = keystoneData;
 	  	});
 

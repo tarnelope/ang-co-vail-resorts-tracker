@@ -1,13 +1,39 @@
-<div class="jumbotron">
+<div class="row marketing">
+	<h4>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h4>	
+	<div class="map" id="map">
+		<div id="popup" class="ol-popup">
+			<a id="popup-closer" class="ol-popup"></a>
+			<div id="popup-content"></div>
+		</div>
+	</div>
+</div>
+
+<!--<div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+</div> -->
 
-<div>
+<div class="row marketing">
+	
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Trail Name</th>
+				<th>Status</th>
+				<th>Difficulty</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="data in keystoneData" ng-if="$index > 0">
+			<td>{{data.trailName}}</td>
+			<td>{{data.trailStatus}}</td>
+			<td>{{data.trailDifficulty}}</td>
+		</tr>
+	</table>
+</div>
 
 <div class="row marketing">
   <h4>HTML5 Boilerplate</h4>
@@ -23,3 +49,5 @@
   <h4>Karma</h4>
   <p>Spectacular Test Runner for JavaScript.</p>
 </div>
+
+<script src="scripts/drawMap.js"></script>
