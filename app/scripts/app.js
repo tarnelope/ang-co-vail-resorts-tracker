@@ -15,12 +15,17 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+	'openlayers-directive'
   ]);
   
   app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/breck', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
