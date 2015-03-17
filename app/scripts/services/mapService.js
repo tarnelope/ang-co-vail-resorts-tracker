@@ -50,12 +50,11 @@ angular
 				})]
 			};
 			
-			var styleFunction = function(feature, resolution) {
+			var styleFunction = function(feature) {
 				if (feature.getProperties().aerialway !== 'chair_lift') {
 					var trailName = feature.getProperties().name;
 					if (trailName !== undefined && trailName !== null) trailName = trailName.toUpperCase();
 					// console.log('openRuns[trailName]: ' + openRuns[trailName] + ' with trailName: ' + trailName);
-					var diff = feature.get('piste:difficulty');
 					if (openRuns[trailName] === undefined || openRuns[trailName] === null) { //Run not open
 						return styles.Unknown;
 					} else {
