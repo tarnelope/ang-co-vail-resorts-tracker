@@ -24,7 +24,7 @@
 </div>
 	
 <div class="main-right-container">
-	<table id="trail-status" class="table table-bordered">
+	<table id="trail-status" class="table table-bordered header-fixed">
 		<thead>
 			<tr>
 				<th>Trail Name</th>
@@ -32,11 +32,13 @@
 				<th>Difficulty</th>
 			</tr>
 		</thead>
-		<tr ng-repeat="trail in dailyData" ng-if="$index > 0">
-			<td><div>{{trail.trailName}}</div></td>
-			<td><div>{{trail.trailStatus}}</div></td>
-			<td><div>{{trail.trailDifficulty}}</div></td>
-		</tr>
+		<tbody>
+			<tr ng-repeat="trail in dailyData" ng-if="$index > 0">
+				<td><div>{{trail.trailName}}</div></td>
+				<td><div>{{trail.trailStatus}}</div></td>
+				<td><div>{{trail.trailDifficulty}}</div></td>
+			</tr>
+		</tbody>
 	</table>
 </div>
 	

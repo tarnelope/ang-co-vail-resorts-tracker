@@ -14,6 +14,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
 	padding-top: 20px;
 	padding-bottom: 20px;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -94,7 +95,7 @@ body {
 .main-left-container {
 	position: fixed;
 	left: 0;
-	width: 65%;
+	width: 65vw;
 	height: 100vh;
 	top: 0;
 	
@@ -122,29 +123,71 @@ body {
 		
 		ul li {
 			background-color: rgba( 0, 0, 0, 0.75);
-			width: 11em;
+			width: 100%;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
 			margin-left: auto;
 			margin-right: auto;
 			text-align: center;
 		}
 	}
-
 }
 
+.nav > li > a:hover,  .nav > li > a:active{
+	background-color: rgba(255, 255, 255, 0.5);
+}
 
-#trail-status {
-	float: right;
-	width: 35%;
-	height: 100vh;
+.main-right-container {
+	width: 35vw;
 	position: absolute;
-	overflow-y: scroll;
 	right: 0;
 	top: 0;
+	
 	display: block;
 	
-	td {
-		font-size: smallest;
-	}
+	#trail-status {
+		
+		td {
+			font-size: smallest;
+		}
+	}	
 }
+
+.header-fixed {
+    width: 100% 
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+	height: 100vh;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    width: 33%;
+    float: left;
+}
+
+.table > tbody > tr > td {
+	padding: 4px;
+}
+
+
 
 
