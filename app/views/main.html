@@ -1,20 +1,15 @@
 <div class="row marketing">
+	
 	<h4>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h4>	
-	<!--<div class="map" id="map">
+	
+	<div class="map" id="map">
 		<div id="popup" class="ol-popup">
-			<a id="popup-closer" class="ol-popup"></a>
+			<a id="popup-closer" class="ol-popup-closer"></a>
 			<div id="popup-content"></div>
 		</div>
-	</div> -->
-		
-	<openlayers ol-center="keystone" height="400px" width="100%">
-		 <ol-layer ol-layer-properties="layer" ng-repeat="layer in geojson"></ol-layer>
-	</openlayers>
-	
-	<pre ng-bind="layers | json"></pre>
+	</div>
+	<button id="changeCenterBtn" ng-click=changeCenter('Vail')>Change Center</button>
 </div>
-
-
 
 <div class="row marketing">
 	<table class="table table-bordered">
@@ -25,10 +20,10 @@
 				<th>Difficulty</th>
 			</tr>
 		</thead>
-		<tr ng-repeat="data in keystoneData" ng-if="$index > 0">
-			<td>{{data.trailName}}</td>
-			<td>{{data.trailStatus}}</td>
-			<td>{{data.trailDifficulty}}</td>
+		<tr ng-repeat="trail in dailyData" ng-if="$index > 0">
+			<td>{{trail.trailName}}</td>
+			<td>{{trail.trailStatus}}</td>
+			<td>{{trail.trailDifficulty}}</td>
 		</tr>
 	</table>
 </div>

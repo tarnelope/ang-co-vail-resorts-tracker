@@ -4,26 +4,6 @@ var app = angular.module('coResortTrackerApp');
 
 app.factory('ResortKeys', function DailyResortStatus($http) {	
 	
-	/*
-		    geojson: [ {
-		                   name: 'Keystone',
-		                   source: {
-		                       type: 'GeoJSON',
-		                       url: '../data/keystoneKey.geojson'
-		                   },
-		                   style: {
-		                       fill: {
-		                           color: 'rgba(255, 0, 255, 0.6)'
-		                       },
-		                       stroke: {
-		                           color: 'black',
-		                           width: 3
-		                       }
-		                   }
-		               }
-				   ],
-	*/
-	
 	var ResortKey = {
 		getBCKey: function() {
 			return $http.get('../data/bcKey.geojson')
@@ -49,6 +29,17 @@ app.factory('ResortKeys', function DailyResortStatus($http) {
 				console.log('Error getting Keystone data: ', data);
 			});
 		},
+		getGeoJSON: function(resortName) {
+			var resortKey;
+			$http.get('../data/'+resortName+'Key.geojson')
+				.success(function(data) {
+					resortKey = data;
+				})
+				.error(function(data) {
+					console.log('Error getting Keystone data: ', data);
+				});
+			
+		}
 	};
 	
 	return ResortKey;

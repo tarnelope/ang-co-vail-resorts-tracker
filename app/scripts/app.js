@@ -21,15 +21,17 @@ var app = angular
   
   app.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/keystone', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'KeystoneCtrl'
       })
       .when('/breck', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'BreckCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+		controller: 'MainCtrl'
+		  
       });
   });

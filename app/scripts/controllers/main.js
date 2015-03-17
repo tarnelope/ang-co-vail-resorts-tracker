@@ -8,64 +8,36 @@
  * Controller of the coResortTrackerApp
  */
 angular.module('coResortTrackerApp')
-	.controller('MainCtrl', function($scope, $location, DailyResortStatus, ResortKeys) {
-
+	.controller('MainCtrl', function($rootScope, $scope, $timeout, DailyResortStatus, ResortKeys, MapService) {
+		
 		$scope.scrapeDate = '';
 		DailyResortStatus.getKeystoneStatus()
-			.success(function(keystoneData) {
+			.success(function(dailyData) {
 				console.log('KeystoneData retrieved! ');
-				$scope.scrapeDate = keystoneData[0];
-				$scope.keystoneData = keystoneData;
+				$scope.scrapeDate = dailyData[0];
+				$scope.dailyData = dailyData;
 			});
 
-		$scope.changeResort = function() {
-			console.log('works!');
-		};
-
-		$scope.isActive = function(viewLocation) {
-			var active = (viewLocation === $location.path());
-			return active;
-		};
+		$scope.changeCenter = function(resort) {
+			console.log('changeCenter');
+			MapService.updateMap(resort);
+		}
 		
-		$scope.resortKey = '';
-		ResortKeys.getKeystoneKey()
-			.success(function(data) {
-				console.log(data.features);
-				$scope.resortKey = data;
+		MapService.createMap('Keystone');
+
+
+	})
+	.controller('BreckCtrl', function($rootScope, $scope, $location, $timeout, DailyResortStatus, ResortKeys, MapService) {
+		
+		$scope.scrapeDate = '';
+		DailyResortStatus.getBreckStatus()
+			.success(function(dailyData) {
+				console.log('BreckData retrieved! ');
+				$scope.scrapeDate = dailyData[0];
+				$scope.dailyData = dailyData;
 			});
 
-		angular.extend($scope, {
-			keystone: {
-				lon: -105.9137,
-				lat: 39.5658,
-				zoom: 14
-			},
-		    geojson: [             
-				{name: 'Keystone',
-	                   source: {
-	                       type: 'GeoJSON',
-						   url: '../data/keystoneKey.geojson'
-					   },
-	                   style: {
-	                       fill: {
-	                           color: 'rgba(255, 0, 255, 0.6)'
-	                       },
-	                       stroke: {
-	                           color: 'black',
-	                           width: 3
-	                       }
-	                   }
-				   }],
-			defaults: {
-				layers: {
-					main: {
-						source: {
-							type: 'OSM',
-							url: 'http://{a-c}.tile.opensnowmap.org/cycle/{z}/{x}/{y}.png'
-						}
-					}
-				},
-			}
-		});
+		MapService.createMap('Breckenridge');
+
 
 	});

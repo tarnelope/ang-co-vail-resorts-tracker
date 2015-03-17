@@ -21,17 +21,20 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+   
+   
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a ng-href="#">Keystone</a></li>
-          <li ng-class="{active: isActive('/breck')}"><a ng-href="/breck">Breck</a></li>
-		  <li><a ng-href="#">Vail</a></li>
-		  <li><a ng-href="#">Beaver Creek</a></li>
-        </ul>
-        <h3 class="text-muted">Colorado Vail Resorts Tracker</h3>
-      </div>
-
+	 
+	  <div class="header">
+	  <ul class="nav nav-pills pull-right">
+	    <li><a href="#/keystone">Keystone</a></li>
+	    <li><a href="#/breck">Breck</a></li>
+	    <li><a>Vail</a></li>
+	    <li><a>Beaver Creek</a></li>
+	  </ul>
+	  <h3 class="text-muted">Colorado Vail Resorts Tracker</h3>
+	  </div>
+	  
       <div ng-view=""></div>
 
       <div class="footer">
@@ -60,9 +63,9 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+  <!--  <script src="bower_components/jquery/dist/jquery.js"></script> -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <!--<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script> -->
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -79,9 +82,15 @@
 		<script src="http://www.opensnowmap.org/js/OpenLayers-2.13.1/OpenLayers.js"></script> -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+		<script src="scripts/services/mapService.js"></script>
 		<script src="scripts/services/dailyStatus.js"></script>
 		<script src="scripts/services/resortKeys.js"></script>
 		<script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.min.js"></script>
+	    <script src="http://ol3js.org/en/master/build/ol.js"></script> 
+	     <!-- Include this version to improve your development/debugging experience
+	     <script src="http://ol3js.org/en/master/build/ol-debug.js"></script> 
+	     -->
+	     <link rel="stylesheet" href="http://ol3js.org/en/master/css/ol.css" />
         <!-- endbuild -->
 </body>
 </html>
