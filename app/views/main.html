@@ -1,3 +1,13 @@
+    <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li><a ng-click=changeCenter('Keystone')>Keystone</a></li>
+      <li><a ng-click=changeCenter('Breckenridge')>Breck</a></li>
+      <li><a ng-click=changeCenter('Vail')>Vail</a></li>
+      <li><a ng-click=changeCenter('BeaverCreek')>Beaver Creek</a></li>
+    </ul>
+    <h3 class="text-muted">Colorado Vail Resorts Tracker</h3>
+    </div>
+	  
 <div class="row marketing">
 	
 	<h4>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h4>	
@@ -8,7 +18,6 @@
 			<div id="popup-content"></div>
 		</div>
 	</div>
-	<button id="changeCenterBtn" ng-click=changeCenter('Vail')>Change Center</button>
 </div>
 
 <div class="row marketing">

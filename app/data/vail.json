@@ -1,7 +1,7 @@
 [
     {
-        "date": "03/9/15",
-        "time": "20:38:38"
+        "date": "03/16/15",
+        "time": "21:4:4"
     },
     {
         "trailName": "COLD FEET",
@@ -200,7 +200,7 @@
     },
     {
         "trailName": "CHICKEN YARD",
-        "trailStatus": "open",
+        "trailStatus": "closed",
         "trailDifficulty": "advanced"
     },
     {
@@ -655,7 +655,7 @@
     },
     {
         "trailName": "GOLDEN PEAK HALF PIPE",
-        "trailStatus": "closed",
+        "trailStatus": "open",
         "trailDifficulty": "advanced"
     },
     {

@@ -1,7 +1,7 @@
 [
     {
-        "date": "03/9/15",
-        "time": "20:38:38"
+        "date": "03/16/15",
+        "time": "21:4:4"
     },
     {
         "trailName": "BEAR PAW",
@@ -25,7 +25,7 @@
     },
     {
         "trailName": "ASPEN ALLEY",
-        "trailStatus": "closed",
+        "trailStatus": "open",
         "trailDifficulty": "intermediate"
     },
     {
@@ -240,7 +240,7 @@
     },
     {
         "trailName": "BEAR TRAP",
-        "trailStatus": "open",
+        "trailStatus": "closed",
         "trailDifficulty": "intermediate"
     },
     {

@@ -8,11 +8,11 @@ var urls = [
 		'resort': 'keystone',
 		'url': 'http://www.keystoneresort.com/ski-and-snowboard/terrain-status.aspx#/TerrainStatus'
 	}, {
-		'resort': 'beaverCreek',
+		'resort': 'beavercreek',
 		'url': 'http://www.beavercreek.com/the-mountain/terrain-status.aspx#/TerrainStatus'
 	},
 	{
-		'resort': 'breck',
+		'resort': 'breckenridge',
 		'url': 'http://www.breckenridge.com/mountain/terrain-status.aspx'
 	},
 	{
