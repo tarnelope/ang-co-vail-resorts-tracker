@@ -16,7 +16,6 @@ angular.module('coResortTrackerApp')
 			MapService.updateMap(resort);
 			DailyResortStatus.getResortStatus(resort)
 				.success(function(dailyData) {
-					console.log('KeystoneData retrieved! ');
 					$scope.scrapeDate = dailyData[0];
 					$scope.dailyData = dailyData;
 				});
@@ -25,7 +24,6 @@ angular.module('coResortTrackerApp')
 		MapService.initMap('Keystone');
 		DailyResortStatus.getResortStatus('Keystone')
 			.success(function(dailyData) {
-				console.log('KeystoneData retrieved! ');
 				$scope.scrapeDate = dailyData[0];
 				$scope.dailyData = dailyData;
 			});

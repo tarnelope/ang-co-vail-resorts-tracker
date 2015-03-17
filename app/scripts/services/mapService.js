@@ -8,51 +8,105 @@ angular
 	.factory('MapService', ['DailyResortStatus',
 		function(DailyResortStatus) {
 
-			var map, vectorSource;
+			var map;
 			var openRuns = {};
+			
+			var styles = {
+				'Neutral': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'rgba(0, 0, 0, 0.2)',
+						width: 2
+					})
+				})],
+				'Easy': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'green',
+						width: 3
+					})
+				})],
+				'Intermediate': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'blue',
+						width: 3
+					})
+				})],
+				'Advanced': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'black',
+						width: 3
+					})
+				})],
+				'Closed': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'red',
+						width: 3
+					})
+				})],
+				'Unknown': [new ol.style.Style({
+					stroke: new ol.style.Stroke({
+						color: 'purple',
+						width: 3
+					})
+				})]
+			};
+			
+			var styleFunction = function(feature, resolution) {
+				if (feature.getProperties().aerialway !== 'chair_lift') {
+					var trailName = feature.getProperties().name;
+					if (trailName !== undefined && trailName !== null) trailName = trailName.toUpperCase();
+					// console.log('openRuns[trailName]: ' + openRuns[trailName] + ' with trailName: ' + trailName);
+					var diff = feature.get('piste:difficulty');
+					if (openRuns[trailName] === undefined || openRuns[trailName] === null) { //Run not open
+						return styles.Unknown;
+					} else {
+						var trailObj = openRuns[trailName];
 
+						if (trailObj.status === 'open') {
+							switch (trailObj.difficulty) {
+								case 'easy':
+									return styles.Easy;
+								case 'intermediate':
+									return styles.Intermediate;
+								case 'advanced':
+									return styles.Advanced;
+								default:
+									return styles.Neutral;
+							}
+						} else {
+							return styles.Closed;
+						}
+					}
+				} else {
+					return styles.Neutral;
+				}
+			};
+			
 			var CreateMap = {
 				updateMap: function(resort) {
 
 					resort = resort.toLowerCase().replace(/\s/g, '');
 
-					var keyName = '';
 					var mapCenter = [];
 
 					switch (resort) {
 						case 'keystone':
-							keyName = '../data/keystoneKey.geojson';
 							mapCenter = [-105.9137, 39.5658];
-							vectorSource = new ol.source.GeoJSON({
-								projection: 'EPSG:3857',
-								url: '../data/keystoneKey.geojson'
-							});
 							break;
 						case 'beavercreek':
-							keyName = '../data/bcKey.geojson';
 							mapCenter = [-106.5179, 39.5826];
-							vectorSource = new ol.source.GeoJSON({
-								projection: 'EPSG:3857',
-								url: '../data/bcKey.geojson'
-							});
 							break;
 						case 'vail':
-							keyName = '../data/vailKey.geojson';
 							mapCenter = [-106.3454, 39.6069];
-							vectorSource = new ol.source.GeoJSON({
-								projection: 'EPSG:3857',
-								url: '../data/vailKey.geojson'
-							});
 							break;
 						case 'breckenridge':
-							keyName = '../data/breckKey.geojson';
 							mapCenter = [-106.0676, 39.4688];
-							vectorSource = new ol.source.GeoJSON({
-								projection: 'EPSG:3857',
-								url: '../data/breckKey.geojson'
-							});
 							break;
 					}
+					
+					var vectorSource = new ol.source.GeoJSON({
+								projection: 'EPSG:3857',
+								url: '../data/' + resort + 'Key.geojson'
+							}); 
 
 					DailyResortStatus.getResortStatus(resort)
 						.then(function(data) {
@@ -69,76 +123,6 @@ angular
 
 					map.getView().setCenter(ol.proj.transform(mapCenter, 'EPSG:4326', 'EPSG:3857'));
 
-					var styles = {
-						'Neutral': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'rgba(0, 0, 0, 0.2)',
-								width: 2
-							})
-						})],
-						'Easy': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'green',
-								width: 3
-							})
-						})],
-						'Intermediate': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'blue',
-								width: 3
-							})
-						})],
-						'Advanced': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'black',
-								width: 3
-							})
-						})],
-						'Closed': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'red',
-								width: 3
-							})
-						})],
-						'Unknown': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'purple',
-								width: 3
-							})
-						})]
-					};
-
-					var styleFunction = function(feature, resolution) {
-						if (feature.getProperties().aerialway !== 'chair_lift') {
-							var trailName = feature.getProperties().name;
-							if (trailName !== undefined && trailName !== null) trailName = trailName.toUpperCase();
-							// console.log('openRuns[trailName]: ' + openRuns[trailName] + ' with trailName: ' + trailName);
-							var diff = feature.get('piste:difficulty');
-							if (openRuns[trailName] === undefined || openRuns[trailName] === null) { //Run not open
-								return styles.Unknown;
-							} else {
-								var trailObj = openRuns[trailName];
-
-								if (trailObj.status === 'open') {
-									switch (trailObj.difficulty) {
-										case 'easy':
-											return styles.Easy;
-										case 'intermediate':
-											return styles.Intermediate;
-										case 'advanced':
-											return styles.Advanced;
-										default:
-											return styles.Neutral;
-									}
-								} else {
-									return styles.Closed;
-								}
-							}
-						} else {
-							return styles.Neutral;
-						}
-					};
-
 					var vectorLayer = new ol.layer.Vector({
 						source: vectorSource,
 						style: styleFunction
@@ -151,7 +135,7 @@ angular
 						return {};
 					}
 					resort = resort.toLowerCase().replace(/\s/g, '');
-					var keyName = '../data/keystoneKey.geojson';
+					var keyName = '../data/'+resort+'Key.geojson';
 					var mapCenter = [-105.9137, 39.5658];
 					DailyResortStatus.getResortStatus(resort)
 						.then(function(data) {
@@ -166,86 +150,14 @@ angular
 							}
 						});
 
-					var styles = {
-						'Neutral': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'rgba(0, 0, 0, 0.2)',
-								width: 2
-							})
-						})],
-						'Easy': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'green',
-								width: 3
-							})
-						})],
-						'Intermediate': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'blue',
-								width: 3
-							})
-						})],
-						'Advanced': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'black',
-								width: 3
-							})
-						})],
-						'Closed': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'red',
-								width: 3
-							})
-						})],
-						'Unknown': [new ol.style.Style({
-							stroke: new ol.style.Stroke({
-								color: 'purple',
-								width: 3
-							})
-						})]
-					};
-
-					var styleFunction = function(feature, resolution) {
-						if (feature.getProperties().aerialway !== 'chair_lift') {
-							var trailName = feature.getProperties().name;
-							if (trailName !== undefined && trailName !== null) trailName = trailName.toUpperCase();
-							// console.log('openRuns[trailName]: ' + openRuns[trailName] + ' with trailName: ' + trailName);
-							var diff = feature.get('piste:difficulty');
-							if (openRuns[trailName] === undefined || openRuns[trailName] === null) { //Run not open
-								return styles.Unknown;
-							} else {
-								var trailObj = openRuns[trailName];
-
-								if (trailObj.status === 'open') {
-									switch (trailObj.difficulty) {
-										case 'easy':
-											return styles.Easy;
-										case 'intermediate':
-											return styles.Intermediate;
-										case 'advanced':
-											return styles.Advanced;
-										default:
-											return styles.Neutral;
-									}
-								} else {
-									return styles.Closed;
-								}
-							}
-						} else {
-							return styles.Neutral;
-						}
-					};
-
 					var selectClick = new ol.interaction.Select({
 						condition: ol.events.condition.click
 					});
 
-					//keystone vector source
 					var vectorSource = new ol.source.GeoJSON({
 						projection: 'EPSG:3857',
 						url: keyName
 					});
-
 
 					var vectorLayer = new ol.layer.Vector({
 						source: vectorSource,
