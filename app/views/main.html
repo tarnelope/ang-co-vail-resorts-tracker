@@ -1,16 +1,18 @@
-    <div class="header">
-    <ul class="nav nav-pills pull-right">
-      <li><a ng-click=changeCenter('Keystone')>Keystone</a></li>
-      <li><a ng-click=changeCenter('Breckenridge')>Breck</a></li>
-      <li><a ng-click=changeCenter('Vail')>Vail</a></li>
-      <li><a ng-click=changeCenter('BeaverCreek')>Beaver Creek</a></li>
-    </ul>
-    <h3 class="text-muted">Colorado Vail Resorts Tracker</h3>
-    </div>
-	  
-<div class="row marketing">
+<div class="main-left-container">
 	
-	<h4>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h4>	
+	<div class="header">
+	    <h4>Colorado Vail Resorts Tracker</h4>
+		<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
+	</div>
+	
+	<div id="footer-nav">
+	    <ul class="nav">
+	      <li><a ng-click=changeCenter('Keystone')>Keystone</a></li>
+	      <li><a ng-click=changeCenter('Breckenridge')>Breck</a></li>
+	      <li><a ng-click=changeCenter('Vail')>Vail</a></li>
+	      <li><a ng-click=changeCenter('BeaverCreek')>Beaver Creek</a></li>
+	    </ul>
+	</div>
 	
 	<div class="map" id="map">
 		<div id="popup" class="ol-popup">
@@ -18,10 +20,11 @@
 			<div id="popup-content"></div>
 		</div>
 	</div>
+	
 </div>
-
-<div class="row marketing">
-	<table class="table table-bordered">
+	
+<div class="main-right-container">
+	<table id="trail-status" class="table table-bordered">
 		<thead>
 			<tr>
 				<th>Trail Name</th>
@@ -30,10 +33,12 @@
 			</tr>
 		</thead>
 		<tr ng-repeat="trail in dailyData" ng-if="$index > 0">
-			<td>{{trail.trailName}}</td>
-			<td>{{trail.trailStatus}}</td>
-			<td>{{trail.trailDifficulty}}</td>
+			<td><div>{{trail.trailName}}</div></td>
+			<td><div>{{trail.trailStatus}}</div></td>
+			<td><div>{{trail.trailDifficulty}}</div></td>
 		</tr>
 	</table>
 </div>
+	
+	
 

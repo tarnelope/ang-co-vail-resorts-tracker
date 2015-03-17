@@ -200,7 +200,7 @@ angular
 						],
 						view: new ol.View({
 							center: ol.proj.transform(mapCenter, 'EPSG:4326', 'EPSG:3857'),
-							zoom: 13
+							zoom: 12
 						}),
 						target: 'map'
 					});
