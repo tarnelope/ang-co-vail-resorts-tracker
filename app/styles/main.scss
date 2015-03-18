@@ -1,4 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$top-bar-height: 3em;
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -17,23 +18,33 @@ body {
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+.top-bar {
+	height: $top-bar-height;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #0097dc;
+	z-index: 1000;
+	
+	h5 {
+		line-height: 1.5em;
+		text-align: right;
+		padding-right: 1em;
+		color: white;
+		font-weight: bold;
+	}
+}
+
 .header{
 	padding-left: 15px;
 	padding-right: 15px;
-	background-color: rgba(0, 0, 0, 0.4);
 	color: white;
-	margin-left: auto;
-	margin-right: auto;
 	position: fixed;
-	right: 35%;
 	z-index: 1000;
-	h4 {
-		
-	}
 	
-	h5 {
-		
+	h3 {
+		line-height: 0;
 	}
 }
 
@@ -97,7 +108,7 @@ body {
 	left: 0;
 	width: 65vw;
 	height: 100vh;
-	top: 0;
+	top: $top-bar-height;
 	
 	#map {
 		padding: 0;
@@ -153,17 +164,35 @@ body {
 	width: 35vw;
 	position: absolute;
 	right: 0;
-	top: 0;
-	
+	top: $top-bar-height;
 	display: block;
 	
 	#trail-status {
 		
-		background-color: rgba(0, 0, 0, 0.8);
-		color: #bbb;
+		background-color: rgba(0, 0, 0, 0.2);
+		color: #444;
+		
+		tbody > tr > td {
+			padding: 4px;
+			border-top: 1px solid rgba(0, 0, 0, 0.3);
+			border-bottom: 0;
+		}
 		
 		td {
 			font-size: smallest;
+		}
+		
+		.easy {
+			color: green;
+		}
+		.intermediate {
+			color: blue;
+		}
+		.advanced {
+			color: black;
+		}
+		.closed {
+			color: red;
 		}
 	}	
 }
@@ -196,14 +225,30 @@ body {
 
 .header-fixed > tbody > tr > td,
 .header-fixed > thead > tr > th {
-    width: 33%;
+    width: 50%;
     float: left;
 }
 
-.table > tbody > tr > td {
-	padding: 4px;
-	border-top: 1px solid rgba(0, 0, 0, 0.3);
-	border-bottom: 0;
+.form-inline {
+	border-left: 2px solid #ddd;
+
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	h4 {
+		text-align: right;
+		width: 100%;
+		padding-right: 1em;
+	}	
+	
+	span { 
+		margin: 1em;
+	}
+	
+	input {
+		width: 55%;
+	}
 }
 
 

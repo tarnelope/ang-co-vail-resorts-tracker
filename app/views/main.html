@@ -1,8 +1,13 @@
+<div class="top-bar">
+	 
+	<div class="header"><h3>Vail Colorado Resorts Tracker</h3></div>
+	 
+	<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
+</div>
+
 <div class="main-left-container">
 	
-	<div class="header">
-	    <h4>Vail Colorado Resorts Tracker</h4>
-	</div>
+	
 	
 	<div id="footer-nav">
 	    <ul class="nav">
@@ -25,8 +30,8 @@
 <div class="main-right-container">
 	
 	<form class="form-inline">
-      <input ng-model="query.trailName" type="text" placeholder="Enter trail name" autofocus>
-		<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
+      <span>Quick Search: </span><input ng-model="query.trailName" type="text" placeholder="Enter trail name" autofocus>
+		
     </form>
 		
 	<table id="trail-status" class="table table-bordered header-fixed">
@@ -34,14 +39,14 @@
 			<tr>
 				<th>Trail Name</th>
 				<th>Status</th>
-				<th>Difficulty</th>
+				<!--<th>Difficulty</th> -->
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="trail in dailyData | filter: query">
 				<td><div>{{trail.trailName}}</div></td>
-				<td><div>{{trail.trailStatus}}</div></td>
-				<td><div>{{trail.trailDifficulty}}</div></td>
+				<td><div class="{{trail.trailStatus}} {{trail.trailDifficulty}}">{{trail.trailStatus}}</div></td>
+				<!-- <td><div>{{trail.trailDifficulty}}</div></td> -->
 			</tr>
 		</tbody>
 	</table>
