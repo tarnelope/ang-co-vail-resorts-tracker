@@ -146,6 +146,9 @@ body {
 	
 	#trail-status {
 		
+		background-color: rgba(0, 0, 0, 0.8);
+		color: #bbb;
+		
 		td {
 			font-size: smallest;
 		}
@@ -186,6 +189,8 @@ body {
 
 .table > tbody > tr > td {
 	padding: 4px;
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
+	border-bottom: 0;
 }
 
 

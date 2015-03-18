@@ -25,6 +25,7 @@ angular.module('coResortTrackerApp')
 		DailyResortStatus.getResortStatus('Keystone')
 			.success(function(dailyData) {
 				$scope.scrapeDate = dailyData[0];
+				dailyData.shift();
 				$scope.dailyData = dailyData;
 			});
 

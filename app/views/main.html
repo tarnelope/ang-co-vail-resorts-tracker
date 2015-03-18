@@ -1,8 +1,7 @@
 <div class="main-left-container">
 	
 	<div class="header">
-	    <h4>Colorado Vail Resorts Tracker</h4>
-		<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
+	    <h4>Vail Colorado Resorts Tracker</h4>
 	</div>
 	
 	<div id="footer-nav">
@@ -24,6 +23,12 @@
 </div>
 	
 <div class="main-right-container">
+	
+	<form class="form-inline">
+      <input ng-model="query.trailName" type="text" placeholder="Filter by" autofocus>
+		<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
+    </form>
+		
 	<table id="trail-status" class="table table-bordered header-fixed">
 		<thead>
 			<tr>
@@ -33,7 +38,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="trail in dailyData" ng-if="$index > 0">
+			<tr ng-repeat="trail in dailyData | filter: query">
 				<td><div>{{trail.trailName}}</div></td>
 				<td><div>{{trail.trailStatus}}</div></td>
 				<td><div>{{trail.trailDifficulty}}</div></td>
