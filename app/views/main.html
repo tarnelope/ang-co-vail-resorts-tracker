@@ -6,10 +6,10 @@
 	
 	<div id="footer-nav">
 	    <ul class="nav">
-	      <li><a ng-click=changeCenter('Keystone')>Keystone</a></li>
-	      <li><a ng-click=changeCenter('Breckenridge')>Breck</a></li>
-	      <li><a ng-click=changeCenter('Vail')>Vail</a></li>
-	      <li><a ng-click=changeCenter('BeaverCreek')>Beaver Creek</a></li>
+	      <li ng-class="{'resort-active':selectedTab === 'Keystone'}"><a ng-click=changeCenter('Keystone')>Keystone</a></li>
+	       <li ng-class="{'resort-active':selectedTab === 'Breckenridge'}"><a ng-click=changeCenter('Breckenridge')>Breck</a></li>
+	        <li ng-class="{'resort-active':selectedTab === 'Vail'}"><a ng-click=changeCenter('Vail')>Vail</a></li>
+	       <li ng-class="{'resort-active': selectedTab === 'BeaverCreek'}"><a ng-click=changeCenter('BeaverCreek')>Beaver Creek</a></li>
 	    </ul>
 	</div>
 	
@@ -25,7 +25,7 @@
 <div class="main-right-container">
 	
 	<form class="form-inline">
-      <input ng-model="query.trailName" type="text" placeholder="Filter by" autofocus>
+      <input ng-model="query.trailName" type="text" placeholder="Enter trail name" autofocus>
 		<h5>Last Updated: {{scrapeDate.date}} at {{scrapeDate.time}}</h5>
     </form>
 		

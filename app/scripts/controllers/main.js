@@ -11,6 +11,8 @@ angular.module('coResortTrackerApp')
 	.controller('MainCtrl', function($rootScope, $scope, DailyResortStatus, MapService) {
 
 		$scope.scrapeDate = '';
+		
+		$scope.selectedTab = 'Keystone';
 
 		$scope.changeCenter = function(resort) {
 			MapService.updateMap(resort);
@@ -19,6 +21,7 @@ angular.module('coResortTrackerApp')
 					$scope.scrapeDate = dailyData[0];
 					$scope.dailyData = dailyData;
 				});
+			$scope.selectedTab = resort;
 		};
 
 		MapService.initMap('Keystone');
@@ -28,6 +31,7 @@ angular.module('coResortTrackerApp')
 				dailyData.shift();
 				$scope.dailyData = dailyData;
 			});
-
+			
+			$scope.resortActive = true;
 
 	});

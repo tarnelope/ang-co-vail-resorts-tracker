@@ -121,6 +121,8 @@ angular
 						});
 
 					map.getView().setCenter(ol.proj.transform(mapCenter, 'EPSG:4326', 'EPSG:3857'));
+					map.getView().setZoom(12);
+					
 
 					var vectorLayer = new ol.layer.Vector({
 						source: vectorSource,

@@ -116,6 +116,23 @@ body {
 		bottom: 0;
 		width: inherit;
 		
+		li > a:hover, li > a:focus {
+		  text-decoration: none;
+		  background-color: rgba(255, 255, 255, 0.75);
+		}
+		
+		li > a:active {
+		  background-color: rgba(255, 255, 255, 0.15);
+		  color: #eee;
+		}
+		
+		.resort-active {
+			background-color: #0097dc;
+			a {
+				color: #eee;
+			}
+		}
+		
 		ul.nav {
 			display: inline-flex;
 			width: 100%;
@@ -130,10 +147,6 @@ body {
 			text-align: center;
 		}
 	}
-}
-
-.nav > li > a:hover,  .nav > li > a:active{
-	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-right-container {
