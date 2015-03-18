@@ -39,14 +39,14 @@
 			<tr>
 				<th>Trail Name</th>
 				<th>Status</th>
-				<!--<th>Difficulty</th> -->
+				<th>Difficulty</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="trail in dailyData | filter: query">
 				<td><div>{{trail.trailName}}</div></td>
 				<td><div class="{{trail.trailStatus}} {{trail.trailDifficulty}}">{{trail.trailStatus}}</div></td>
-				<!-- <td><div>{{trail.trailDifficulty}}</div></td> -->
+				<td><div>{{trail.trailDifficulty}}</div></td>
 			</tr>
 		</tbody>
 	</table>
